@@ -1,0 +1,107 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="87">
+            <item index="0" class="java.lang.String" itemvalue="psycopg2-binary" />
+            <item index="1" class="java.lang.String" itemvalue="redis" />
+            <item index="2" class="java.lang.String" itemvalue="backports.zoneinfo" />
+            <item index="3" class="java.lang.String" itemvalue="boto3" />
+            <item index="4" class="java.lang.String" itemvalue="requests" />
+            <item index="5" class="java.lang.String" itemvalue="pyjwt" />
+            <item index="6" class="java.lang.String" itemvalue="greenlet" />
+            <item index="7" class="java.lang.String" itemvalue="nltk" />
+            <item index="8" class="java.lang.String" itemvalue="pytest-django" />
+            <item index="9" class="java.lang.String" itemvalue="PyYAML" />
+            <item index="10" class="java.lang.String" itemvalue="opentelemetry-instrumentation-django" />
+            <item index="11" class="java.lang.String" itemvalue="python-dateutil" />
+            <item index="12" class="java.lang.String" itemvalue="opentelemetry-exporter-jaeger" />
+            <item index="13" class="java.lang.String" itemvalue="py" />
+            <item index="14" class="java.lang.String" itemvalue="kombu" />
+            <item index="15" class="java.lang.String" itemvalue="pycparser" />
+            <item index="16" class="java.lang.String" itemvalue="opentelemetry-instrumentation-requests" />
+            <item index="17" class="java.lang.String" itemvalue="django-json-widget" />
+            <item index="18" class="java.lang.String" itemvalue="certifi" />
+            <item index="19" class="java.lang.String" itemvalue="anyjson" />
+            <item index="20" class="java.lang.String" itemvalue="django-model-utils" />
+            <item index="21" class="java.lang.String" itemvalue="gevent" />
+            <item index="22" class="java.lang.String" itemvalue="pyparsing" />
+            <item index="23" class="java.lang.String" itemvalue="Markdown" />
+            <item index="24" class="java.lang.String" itemvalue="vine" />
+            <item index="25" class="java.lang.String" itemvalue="jsonschema" />
+            <item index="26" class="java.lang.String" itemvalue="slack-sdk" />
+            <item index="27" class="java.lang.String" itemvalue="django-celery-beat" />
+            <item index="28" class="java.lang.String" itemvalue="iniconfig" />
+            <item index="29" class="java.lang.String" itemvalue="wrapt" />
+            <item index="30" class="java.lang.String" itemvalue="asgiref" />
+            <item index="31" class="java.lang.String" itemvalue="cryptography" />
+            <item index="32" class="java.lang.String" itemvalue="reportlab" />
+            <item index="33" class="java.lang.String" itemvalue="gunicorn" />
+            <item index="34" class="java.lang.String" itemvalue="click" />
+            <item index="35" class="java.lang.String" itemvalue="attrs" />
+            <item index="36" class="java.lang.String" itemvalue="crypto" />
+            <item index="37" class="java.lang.String" itemvalue="opentelemetry-instrumentation-redis" />
+            <item index="38" class="java.lang.String" itemvalue="django-filter" />
+            <item index="39" class="java.lang.String" itemvalue="charset-normalizer" />
+            <item index="40" class="java.lang.String" itemvalue="pika" />
+            <item index="41" class="java.lang.String" itemvalue="idna" />
+            <item index="42" class="java.lang.String" itemvalue="shellescape" />
+            <item index="43" class="java.lang.String" itemvalue="rule_engine" />
+            <item index="44" class="java.lang.String" itemvalue="PyJWT" />
+            <item index="45" class="java.lang.String" itemvalue="async-timeout" />
+            <item index="46" class="java.lang.String" itemvalue="pluggy" />
+            <item index="47" class="java.lang.String" itemvalue="cffi" />
+            <item index="48" class="java.lang.String" itemvalue="opentelemetry-sdk" />
+            <item index="49" class="java.lang.String" itemvalue="wcwidth" />
+            <item index="50" class="java.lang.String" itemvalue="thefuzz" />
+            <item index="51" class="java.lang.String" itemvalue="click-didyoumean" />
+            <item index="52" class="java.lang.String" itemvalue="importlib-metadata" />
+            <item index="53" class="java.lang.String" itemvalue="pyrsistent" />
+            <item index="54" class="java.lang.String" itemvalue="sqlparse" />
+            <item index="55" class="java.lang.String" itemvalue="celery" />
+            <item index="56" class="java.lang.String" itemvalue="Deprecated" />
+            <item index="57" class="java.lang.String" itemvalue="zipp" />
+            <item index="58" class="java.lang.String" itemvalue="num2words" />
+            <item index="59" class="java.lang.String" itemvalue="opentelemetry-instrumentation-psycopg2" />
+            <item index="60" class="java.lang.String" itemvalue="prompt-toolkit" />
+            <item index="61" class="java.lang.String" itemvalue="tomli" />
+            <item index="62" class="java.lang.String" itemvalue="urllib3" />
+            <item index="63" class="java.lang.String" itemvalue="django-celery" />
+            <item index="64" class="java.lang.String" itemvalue="djangorestframework" />
+            <item index="65" class="java.lang.String" itemvalue="django-cors-headers" />
+            <item index="66" class="java.lang.String" itemvalue="billiard" />
+            <item index="67" class="java.lang.String" itemvalue="six" />
+            <item index="68" class="java.lang.String" itemvalue="django-celery-results" />
+            <item index="69" class="java.lang.String" itemvalue="pytest" />
+            <item index="70" class="java.lang.String" itemvalue="amqp" />
+            <item index="71" class="java.lang.String" itemvalue="packaging" />
+            <item index="72" class="java.lang.String" itemvalue="cashfree-sdk" />
+            <item index="73" class="java.lang.String" itemvalue="Naked" />
+            <item index="74" class="java.lang.String" itemvalue="importlib-resources" />
+            <item index="75" class="java.lang.String" itemvalue="Django" />
+            <item index="76" class="java.lang.String" itemvalue="future" />
+            <item index="77" class="java.lang.String" itemvalue="django-redis" />
+            <item index="78" class="java.lang.String" itemvalue="click-repl" />
+            <item index="79" class="java.lang.String" itemvalue="pycryptodome" />
+            <item index="80" class="java.lang.String" itemvalue="pytz" />
+            <item index="81" class="java.lang.String" itemvalue="click-plugins" />
+            <item index="82" class="java.lang.String" itemvalue="fastapi" />
+            <item index="83" class="java.lang.String" itemvalue="langchain-openai" />
+            <item index="84" class="java.lang.String" itemvalue="langchain-core" />
+            <item index="85" class="java.lang.String" itemvalue="uvicorn" />
+            <item index="86" class="java.lang.String" itemvalue="langchain-anthropic" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyStubPackagesAdvertiser" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <list>
+          <option value="pyspark-stubs==3.0.0.post3" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
