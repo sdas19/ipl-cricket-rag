@@ -22,6 +22,12 @@ def setting(name):
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 EMBED_MODEL = os.environ.get("EMBED_MODEL", "openai/text-embedding-3-small")
 
+# The chat model that writes answers (Lesson 3). Copy the exact id from
+# openrouter.ai/models; prices are $ per 1M tokens, from the same page.
+CHAT_MODEL = os.environ.get("CHAT_MODEL", "anthropic/claude-haiku-5.5")
+CHAT_IN_PRICE = float(os.environ.get("CHAT_IN_PRICE", "0"))
+CHAT_OUT_PRICE = float(os.environ.get("CHAT_OUT_PRICE", "0"))
+
 
 def get_embeddings():
     """The embedding model. The SAME one must embed the chunks (ingest.py)
@@ -37,19 +43,45 @@ def get_embeddings():
         # sending. Non-OpenAI endpoints expect plain text, so switch that off.
         check_embedding_ctx_length=False,
         chunk_size=100,                          # texts per API call when embedding many
+        # Never wait without a limit: the client's default is minutes per try.
+        timeout=20,                              # give up on one request after 20 s
+        max_retries=2,                           # then retry at most twice
+    )
+
+
+def get_chat_model(max_tokens=1000):
+    """The answer-writing model, via OpenRouter."""
+    from langchain_openai import ChatOpenAI
+
+    return ChatOpenAI(
+        model=CHAT_MODEL,
+        base_url=OPENROUTER_BASE_URL,
+        api_key=setting("OPENROUTER_API_KEY"),
+        temperature=0,           # same sources -> same answer: easier to test
+        # Room for hidden reasoning + the answer. Reasoning tokens count too:
+        # at 400 a Hinglish answer was cut off mid-word.
+        max_tokens=max_tokens,
+        stream_usage=True,       # token counts (incl. cache) arrive with the stream
+        timeout=60,
+        max_retries=2,
     )
 
 
 def connect():
     import psycopg
 
-    return psycopg.connect(
+    conn = psycopg.connect(
         setting("DATABASE_URL"),
         connect_timeout=10,          # fail fast instead of hanging
         keepalives=1,                # detect a dropped connection
         keepalives_idle=30,
         prepare_threshold=None,      # no prepared statements: safest through Supabase's pooler
     )
+    # Waiting on another transaction's lock for >15 s is a stuck session,
+    # not slow work: stop with a clear "lock timeout" instead of hanging.
+    conn.execute("set lock_timeout = '15s'")
+    conn.execute("set statement_timeout = '120s'")
+    return conn
 
 
 def to_pgvector(vec):
