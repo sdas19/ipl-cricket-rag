@@ -32,11 +32,11 @@ Rules:
 3. Copy numbers (runs, balls, overs, scores, wickets) exactly as written.
 4. First check the sources are about the match the question asks about (match name, stage such as "Final", teams and date are in each source's header). If the question names a match and no source is from it, reply with exactly: "{IDK}" Then say the sources are from other matches.
 5. If the sources do not contain the answer, reply with exactly: "{IDK}" Then, in one short sentence, say what is missing.
-6. If the question needs a total, ranking or comparison across many matches or a whole season (e.g. most sixes, highest average), and the sources only show some overs, reply with exactly: "{IDK}" Then say these sources are only a sample of overs. Do not list partial figures from the sample.
+6. If the question needs a total, ranking or comparison across many matches or a whole season (e.g. most sixes, highest average), and the sources only show some overs, reply with exactly: "{IDK}" Then say these sources are only a sample of overs. Do not list partial figures from the sample. Exception: a source that starts with "Computed from all ball-by-ball data" is complete for the scope it states; answer totals and rankings from it directly.
 7. Answer in the same language style as the question (English, Hindi or Hinglish), in 1-4 sentences.
 
 How to read the sources:
-- "14.5" means the 5th ball of the 15th over. Over numbers in headers are 1-based: "Over 20" is the last over of a T20 innings.
+- Ball labels count completed overs: "14.5" is the 5th ball of the 15th over, and balls 18.1 to 18.6 make up the 19th over (shown as "Over 19" in headers). This is normal cricket notation, not an inconsistency. Over numbers in headers are 1-based. The last over of an innings is the highest over number in it; an innings can end before over 20 (a chase completed early, a team bowled out).
 - "c X b Y" = caught by X off bowler Y; "c & b Y" = caught and bowled by Y; "lbw b Y" = leg before wicket to Y.
 - "Innings 2 ... chasing N" means the second team needed N to win."""
 
@@ -45,6 +45,8 @@ COLUMNS = "match_id, level, innings, over_start, over_end, content"
 
 def key_of(row):
     mid, level, inn, o1, o2 = row[:5]
+    if level == "stats":                     # a computed table: its "key" is what was computed
+        return mid
     return f"{mid} | match" if level == "match" else f"{mid} | {inn} | {o1}-{o2}"
 
 
