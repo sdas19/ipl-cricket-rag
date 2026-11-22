@@ -28,6 +28,10 @@ CHAT_MODEL = os.environ.get("CHAT_MODEL", "anthropic/claude-haiku-5.5")
 CHAT_IN_PRICE = float(os.environ.get("CHAT_IN_PRICE", "0"))
 CHAT_OUT_PRICE = float(os.environ.get("CHAT_OUT_PRICE", "0"))
 
+# Lesson 3c: the reranker (OpenRouter's /rerank endpoint) and the default search mode.
+RERANK_MODEL = os.environ.get("RERANK_MODEL", "cohere/rerank-v3.5")
+SEARCH_MODE = os.environ.get("SEARCH_MODE", "hybrid_rerank")
+
 
 def get_embeddings():
     """The embedding model. The SAME one must embed the chunks (ingest.py)

@@ -1,0 +1,37 @@
+id,question,type,language,expected_route,expected_match,expected_over,expected_players,expected_stat,expected_keys,must_contain,should_refuse
+r01,Who won the 2025 IPL final and by how many runs?,match_result,english,lookup,1473511,,,,1473511 | match,Royal Challengers|RCB;6,no
+r02,Qualifier 1 kisne jeeta aur kitne wicket se?,match_result,hinglish,lookup,1473508,,,,1473508 | match,Royal Challengers|RCB;8,no
+r03,What was the result of match 57?,match_result,english,lookup,1473494,,,,1473494 | match,Chennai|CSK;2 wickets,no
+r04,Eliminator me Mumbai ne kitne runs se jeeta?,match_result,hinglish,lookup,1473509,,,,1473509 | match,20,no
+o01,What happened in the 19th over of RCB's innings in the final?,over_lookup,english,lookup,1473511,19,,,1473511 | 1 | 19-19,Omarzai;14,no
+o02,Final me Punjab ki innings ka 17th over kisne daala?,over_lookup,hinglish,lookup,1473511,17,,,1473511 | 2 | 17-17,Kumar,no
+o03,Final ka 18th over kaisa gaya Punjab ke liye?,over_lookup,hinglish,lookup,1473511,18,,,1473511 | 2 | 18-18,Dayal;Omarzai,no
+l01,Who bowled the final over of the Eliminator?,last_over,english,lookup,1473509,last,,,1473509 | 2 | 20-20,Gleeson;Ashwani,no
+l02,Qualifier 2 ka aakhri over kaun daal raha tha?,last_over,hinglish,lookup,1473510,last,,,1473510 | 2 | 19-19,Ashwani,no
+l03,How many runs came in the last over of Qualifier 1?,last_over,english,lookup,1473508,last,,,1473508 | 2 | 10-10,14,no
+l04,Who bowled the last over in match 38 and how many runs did it go for?,last_over,english,lookup,1473475,last,,,1473475 | 2 | 16-16,Pathirana;20,no
+e01,How did Virat Kohli get out in Qualifier 1?,dismissal,english,search,1473508,,V Kohli,,1473508 | 2 | 4-4,Jamieson;Inglis,no
+e02,Shreyas Iyer final me kaise out hua?,dismissal,hinglish,search,1473511,,SS Iyer,,1473511 | 2 | 10-10,Shepherd;Sharma,no
+e03,How was Rohit Sharma dismissed in the Eliminator?,dismissal,english,search,1473509,,RG Sharma,,1473509 | 1 | 17-17,Prasidh;Rashid,no
+d01,Describe Jasprit Bumrah's bowling in the Eliminator,descriptive,english,search,1473509,,JJ Bumrah,,1473509 | 2 | 2-2;1473509 | 2 | 6-6;1473509 | 2 | 14-14;1473509 | 2 | 18-18,Bumrah,no
+d02,Final me Shashank Singh ki batting kaisi rahi?,descriptive,hinglish,search|stats,1473511,,Shashank Singh,,1473511 | match;1473511 | 2 | 17-17;1473511 | 2 | 18-18;1473511 | 2 | 19-19;1473511 | 2 | 20-20,Shashank,no
+p01,How many runs did Virat Kohli score in IPL 2025?,player_stats,english,stats,,,V Kohli,player_batting,,657,no
+p02,Suyash Sharma ki economy kitni thi is season?,player_stats,hinglish,stats,,,Suyash Sharma,player_bowling,,8.84,no
+p03,How many wickets did Prasidh Krishna take this season?,player_stats,english,stats,,,M Prasidh Krishna,player_bowling,,25,no
+p04,Kohli ne final me kitne run banaye?,player_stats,hinglish,stats,1473511,,V Kohli,player_batting,,43;35,no
+p05,What was Bumrah's economy rate in the death overs in 2025?,player_stats,english,stats,,,JJ Bumrah,player_bowling|best_economy,,6.98,no
+s01,Who hit the most sixes this IPL season?,leaderboard,english,stats,,,,most_sixes,,Pooran;40,no
+s02,Sabse zyada wicket kisne liye 2025 me?,leaderboard,hinglish,stats,,,,most_wickets,,Prasidh;25,no
+s03,Sabse zyada chauke kisne maare is season?,leaderboard,hinglish,stats,,,,most_fours,,Sai Sudharsan;88,no
+s04,Who scored the most runs for Mumbai Indians in 2025?,leaderboard,english,stats,,,,most_runs,,Yadav;717,no
+s05,Which bowler had the best economy in the powerplay this season?,leaderboard,english,stats,,,,best_economy,,Sandeep Sharma;6.83,no
+s06,Final me sabse zyada chhakke kisne maare?,leaderboard,hinglish,stats,1473511,,,most_sixes,,Shashank;6,no
+s07,Who took the most wickets for Gujarat Titans?,leaderboard,english,stats,,,,most_wickets,,Prasidh;25,no
+n01,How did Ashok Dinda bowl in 2025?,not_in_data,english,stop,,,,,,isn't in our,yes
+n02,Sachin Tendulkar ne kitne run banaye?,not_in_data,hinglish,stop,,,,,,isn't in our,yes
+a01,How many runs did Iyer score?,ambiguous,english,stop,,,,,,Which player;SS Iyer;VR Iyer,yes
+a02,Sharma ki bowling kaisi thi?,ambiguous,hinglish,stop,,,,,,Which player,yes
+x01,Who won the 2024 T20 World Cup?,out_of_scope,english,stop,,,,,,only answer questions about IPL,yes
+x02,Mumbai me aaj mausam kaisa hai?,out_of_scope,hinglish,stop,,,,,,only answer questions about IPL,yes
+u01,Who took the most wickets in the 2025 playoffs?,unsupported_scope,english,stats,,,,most_wickets,,,yes
+u02,What was Kohli's strike rate against spin bowling?,unsupported_scope,english,,,,V Kohli,,,,yes

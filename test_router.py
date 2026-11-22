@@ -223,3 +223,19 @@ def test_exact_over_beats_the_search_label():
     d = decide(plan(route="search", match_number=38, over="last"), db)
     assert d["route"] == "lookup" and d["rows"][0][2:4] == (2, 19) and db.searches == []
     assert any("using lookup" in n for n in d["notes"])
+
+
+def test_stats_scope_names_the_match_in_words():
+    d = decide(plan(route="stats", stat="most_sixes", stage="Final"), FakeDB())
+    label, content = d["rows"][0][0], d["rows"][0][5]
+    assert "Final (Match 74), Royal Challengers Bengaluru vs Punjab Kings, 2025-06-03" in content
+    assert "1473511" not in content and "Final 74" in label
+
+
+def test_named_team_picks_its_batting_innings():
+    class TwoInnings(FakeDB):
+        def lookup(self, match_id, innings=None, over=None):
+            return [("1473511", "over", 1, 17, 17, "Innings 1: Royal Challengers Bengaluru batting · Over 17"),
+                    ("1473511", "over", 2, 17, 17, "Innings 2: Punjab Kings batting · Over 17")]
+    d = decide(plan(route="lookup", stage="Final", over=17, teams=["Punjab"]), TwoInnings())
+    assert [r[2] for r in d["rows"]] == [2] and any("Punjab Kings batted" in n for n in d["notes"])

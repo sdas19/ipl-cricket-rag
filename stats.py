@@ -88,10 +88,26 @@ def run(cur, stat, **filters):
     return title, cols, cur.fetchall(), sql, params
 
 
-def as_source(title, cols, rows, filters):
+def describe_match(m):
+    """'Final (Match 74), Royal Challengers Bengaluru vs Punjab Kings, 2025-06-03'"""
+    stage = m["stage"] if m["stage"] != "League" else "League match"
+    return f"{stage} (Match {m['match_number']}), {m['team1']} vs {m['team2']}, {m['match_date']}"
+
+
+def as_source(title, cols, rows, filters, match=None):
     """Format the result as one source for the answer model. It says plainly
-    that it was computed from ALL balls, so the model may state totals from it."""
-    scope = ", ".join(f"{k}={v}" for k, v in filters.items() if v and k != "limit")
+    that it was computed from ALL balls, so the model may state totals from it.
+    The scope is written in words: the answer model can't know that
+    match_id 1473511 is the Final unless the source says so."""
+    parts = []
+    for k, v in filters.items():
+        if not v or k == "limit":
+            continue
+        if k == "match_id" and match:
+            parts.append(f"match = {describe_match(match)}")
+        else:
+            parts.append(f"{k}={v}")
+    scope = ", ".join(parts)
     lines = [f"Computed from all ball-by-ball data ({scope}): {title}"]
     if not rows or all(v is None for v in rows[0]):
         lines.append("No matching balls found.")

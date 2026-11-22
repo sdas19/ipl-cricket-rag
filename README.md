@@ -20,8 +20,12 @@ chunked per over with a context header, embedded via OpenRouter, stored in Supab
 | `stats.py` | routing | fixed SQL templates for calculated answers (most sixes, economy, a player's season) |
 | `rewrite.py` | routing | one cheap model call: question -> validated Plan (route, filters, English text) |
 | `router.py` | routing | rewrite -> name check -> match -> lookup / stats / search -> answer |
+| `search.py` | routing | keyword query (OR + synonyms), Reciprocal Rank Fusion, reranker call |
+| `golden.csv` | evals | 36 questions, 11 types, English + Hinglish, with expected route, match, keys, facts |
+| `eval.py` | evals | runs the golden set; scores routing, retrieval and answers by question type |
 | `test_chunker.py` | tests | chunker on a hand-made match |
 | `test_router.py` | tests | ingest, resolve, stats, rewrite and routing (fakes, no network) |
+| `test_eval.py` | tests | search helpers and eval scoring |
 | `test_answer.py` | tests | caching adapter, cost maths, citations, prompt layout (fake chat model) |
 
 ## Run
@@ -37,4 +41,6 @@ python answer.py "Who won the 2025 final and by how much?"
 python answer.py "Who bowled the last over?" --mode match --match 1473511
 python ingest_deliveries.py --season 2025
 python router.py "final me last over kisne daala aur kitne run bane?" --show-plan
+python eval.py --search-mode vector --out vector.json
+python eval.py --search-mode hybrid_rerank --out hybrid_rerank.json
 ```
